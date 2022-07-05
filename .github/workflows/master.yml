@@ -24,7 +24,7 @@ jobs:
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
           git pull
-          mvn -q -s settings.xml clean install
+          mvn -s settings.xml clean install
 
       - name: HerokuCLI
         run: |
