@@ -1,0 +1,14 @@
+wutsi:
+  application:
+    server-url: ${wutsi.application.gateway-url}/store
+  platform:
+    security:
+      api-key: ${API_KEY}
+    storage:
+      type: aws
+      aws:
+        bucket: int-wutsi
+    stream:
+      type: rabbitmq
+      rabbitmq:
+        url: ${CLOUDAMQP_URL}

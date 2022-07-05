@@ -1,0 +1,78 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    min-response-size: 512
+
+management:
+  endpoint:
+    health:
+      show-details: always
+    info:
+      git:
+        mode: full
+  endpoints:
+    web:
+      exposure:
+        include: "beans,health,info,scheduledtasks,mappings"
+
+spring:
+  main:
+    lazy-initialization: false
+
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+      ACCEPT_EMPTY_STRING_AS_NULL_OBJECT: true
+    mapper:
+      ACCEPT_CASE_INSENSITIVE_ENUMS: true
+      ACCEPT_CASE_INSENSITIVE_PROPERTIES: true
+    default-property-inclusion: non_null
+
+wutsi:
+  application:
+    name: wutsi-news-bff
+    server-url: http://localhost:${server.port}
+    asset-url: https://int-wutsi.s3.amazonaws.com
+    gateway-url: https://wutsi-gateway-test.herokuapp.com
+    cash-url: ${wutsi.application.gateway-url}/cash
+    login-url: ${wutsi.application.gateway-url}/login
+    shell-url: ${wutsi.application.gateway-url}/shell
+  platform:
+    image:
+      type: image-kit
+      image-kit:
+        origin-url: "https://s3.amazonaws.com/prod-wutsi"
+        endpoint-url: "https://ik.imagekit.io/toifevuwjn"
+    security:
+      type: jwt
+      api-key: "afee6582-fca2-11ec-8731-0edcb1c2453f"
+    tracing:
+      client-id: ${wutsi.application.name}
+
+  store:
+    pictures:
+      max-per-product: 5
+      max-width: 512
+      max-height: 512
+
+logging:
+  level:
+    root: INFO
+    com:
+      wutsi:
+        platform:
+          account:
+            WutsiAccountApi: DEBUG
+          catalog:
+            WutsiCatalogApi: DEBUG
+          payment:
+            WutsiPaymentApi: DEBUG
+          tenant:
+            WutsiTenantApi: DEBUG
+  pattern:
+    console: "%d type=%level logger=%class{20} thread=%thread %m%n"
+    file: "%d type=%level logger=%class{20} thread=%thread %m%n"
+
+

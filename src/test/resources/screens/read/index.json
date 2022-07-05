@@ -1,0 +1,173 @@
+{
+  "type": "Screen",
+  "attributes": {
+    "id": "page.news.read",
+    "safe": false
+  },
+  "children": [
+    {
+      "type": "SingleChildScrollView",
+      "attributes": {},
+      "children": [
+        {
+          "type": "Column",
+          "attributes": {
+            "mainAxisAlignment": "start",
+            "crossAxisAlignment": "start"
+          },
+          "children": [
+            {
+              "type": "Container",
+              "attributes": {
+                "padding": 10.0
+              },
+              "children": [
+                {
+                  "type": "Text",
+                  "attributes": {
+                    "caption": "Sample Story",
+                    "bold": true,
+                    "size": 16.0,
+                    "overflow": "Elipsis",
+                    "maxLines": 3
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "Row",
+              "attributes": {},
+              "children": [
+                {
+                  "type": "Container",
+                  "attributes": {
+                    "padding": 10.0
+                  },
+                  "children": []
+                },
+                {
+                  "type": "CircleAvatar",
+                  "attributes": {
+                    "radius": 12.0
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "attributes": {
+                        "url": "https://www.img.png/11.png"
+                      },
+                      "children": []
+                    }
+                  ],
+                  "action": {
+                    "type": "Route",
+                    "url": "http://localhost:0/?author-id=11"
+                  }
+                },
+                {
+                  "type": "Container",
+                  "attributes": {
+                    "padding": 10.0
+                  },
+                  "children": []
+                },
+                {
+                  "type": "Container",
+                  "attributes": {},
+                  "children": [
+                    {
+                      "type": "Text",
+                      "attributes": {
+                        "caption": "RAY SPONSIBLE",
+                        "color": "#1D7EDF",
+                        "size": 10.0,
+                        "overflow": "Elipsis",
+                        "decoration": "Underline"
+                      },
+                      "children": []
+                    }
+                  ],
+                  "action": {
+                    "type": "Route",
+                    "url": "http://localhost:0/?author-id=11"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Divider",
+              "attributes": {
+                "color": "#8c8c8c"
+              },
+              "children": []
+            },
+            {
+              "type": "Html",
+              "attributes": {
+                "data": "<h1>Editor.js</h1>\n<p>Hey. Meet the new Editor. On this page you can see it in action — try to edit this text</p>\n<ul><li>It is a block-styled editor</li><li>It returns clean data output in JSON</li><li>Designed to be extendable and pluggable with a simple API</li></ul>\n<hr />\n<figure><img src='/upload/temporary/o_488cfb382712d6af914301c73f376e8c.jpg' alt='Logo' class='stretched border background' /><figcaption>Logo</figcaption></figure>\n<pre class='code'>class Foo { }</pre>\n"
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "appBar": {
+    "type": "AppBar",
+    "attributes": {
+      "title": "RAY SPONSIBLE",
+      "elevation": 0.0,
+      "backgroundColor": "#FFFFFF",
+      "foregroundColor": "#000000"
+    },
+    "children": []
+  },
+  "bottomNavigationBar": {
+    "type": "BottomNavigationBar",
+    "attributes": {
+      "background": "#1D7EDF",
+      "selectedItemColor": "#FFFFFF",
+      "unselectedItemColor": "#FFFFFF"
+    },
+    "children": [
+      {
+        "type": "BottomNavigationBarItem",
+        "attributes": {
+          "icon": "f107",
+          "caption": "Home"
+        },
+        "children": [],
+        "action": {
+          "type": "Route",
+          "url": "route:/~"
+        }
+      },
+      {
+        "type": "BottomNavigationBarItem",
+        "attributes": {
+          "icon": "f27b",
+          "caption": "Me"
+        },
+        "children": [],
+        "action": {
+          "type": "Route",
+          "url": "https://wutsi-gateway-test.herokuapp.com/shell/profile"
+        }
+      },
+      {
+        "type": "BottomNavigationBarItem",
+        "attributes": {
+          "icon": "f36e",
+          "caption": "Settings"
+        },
+        "children": [],
+        "action": {
+          "type": "Route",
+          "url": "https://wutsi-gateway-test.herokuapp.com/shell/settings"
+        }
+      }
+    ]
+  }
+}
