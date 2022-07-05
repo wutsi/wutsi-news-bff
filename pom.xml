@@ -121,13 +121,13 @@
   </repositories>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/wutsi/wutsi-store-bff.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/wutsi/wutsi-news-bff.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
   <distributionManagement>
     <repository>
       <id>github</id>
-      <url>https://maven.pkg.github.com/wutsi/wutsi-store-bff</url>
+      <url>https://maven.pkg.github.com/wutsi/wutsi-news-bff</url>
     </repository>
   </distributionManagement>
 
