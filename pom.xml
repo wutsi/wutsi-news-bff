@@ -31,7 +31,7 @@
     <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 
     <wutsi-editorjs.version>1.20.0</wutsi-editorjs.version>
-    <wutsi-shared-ui.version>0.0.266</wutsi-shared-ui.version>
+    <wutsi-shared-ui.version>0.0.268</wutsi-shared-ui.version>
   </properties>
 
   <dependencies>
