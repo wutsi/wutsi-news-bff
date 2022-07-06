@@ -44,7 +44,7 @@ jobs:
           heroku config:set --app ${HEROKU_APP} API_KEY=${API_KEY}
           heroku addons -a ${HEROKU_APP} | grep papertrail && echo 'addon: papertrail exists' ||  heroku addons:create papertrail -a ${HEROKU_APP}
           heroku deploy:jar target/wutsi-news-bff.jar --app ${HEROKU_APP}
-          echo Health check....
+          echo Health check https://${HEROKU_APP}.herokuapp.com/actuator/health...
           sleep 90
           curl -sSf https://${HEROKU_APP}.herokuapp.com/actuator/health >> /dev/null
 
@@ -61,6 +61,6 @@ jobs:
           heroku config:set --app ${HEROKU_APP} API_KEY=${API_KEY}
           heroku addons -a ${HEROKU_APP} | grep papertrail && echo 'addon: papertrail exists' ||  heroku addons:create papertrail -a ${HEROKU_APP}
           heroku deploy:jar target/wutsi-news-bff.jar --app ${HEROKU_APP}
-          echo Health check....
+          echo Health check https://${HEROKU_APP}.herokuapp.com/actuator/health....
           sleep 90
           curl -sSf https://${HEROKU_APP}.herokuapp.com/actuator/health >> /dev/null
