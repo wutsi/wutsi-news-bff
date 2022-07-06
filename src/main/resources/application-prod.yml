@@ -6,11 +6,3 @@ wutsi:
   platform:
     security:
       api-key: ${API_KEY}
-    storage:
-      type: aws
-      aws:
-        bucket: prod-wutsi
-    stream:
-      type: rabbitmq
-      rabbitmq:
-        url: ${CLOUDAMQP_URL}
