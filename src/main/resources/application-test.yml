@@ -1,6 +1,6 @@
 wutsi:
   application:
-    server-url: ${wutsi.application.gateway-url}/store
+    server-url: ${wutsi.application.gateway-url}/news
   platform:
     security:
       api-key: ${API_KEY}
