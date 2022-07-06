@@ -45,8 +45,7 @@ jobs:
           heroku addons -a ${HEROKU_APP} | grep papertrail && echo 'addon: papertrail exists' ||  heroku addons:create papertrail -a ${HEROKU_APP}
           heroku deploy:jar target/wutsi-news-bff.jar --app ${HEROKU_APP}
           echo Health check
-          sleep 90
-          curl -sSf https://${HEROKU_APP}.herokuapp.com/actuator/health >> /dev/null
+          sleep 30 | curl -sSf https://${HEROKU_APP}.herokuapp.com/actuator/health >> /dev/null | sleep 30 | curl -sSf https://${HEROKU_APP}.herokuapp.com/actuator/health >> /dev/null |
 
       - name: Heroku-Deploy-Prod
         env:
