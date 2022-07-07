@@ -40,6 +40,7 @@ import com.wutsi.platform.core.image.Transformation
 import com.wutsi.platform.core.tracing.TracingContext
 import com.wutsi.platform.tenant.dto.Tenant
 import org.slf4j.LoggerFactory
+import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -210,7 +211,7 @@ class ReadScreen(
             )
         )
 
-        val fmt = SimpleDateFormat(tenant.dateFormat)
+        val fmt = SimpleDateFormat(tenant.dateFormat, LocaleContextHolder.getLocale())
         children.addAll(
             stories.flatMap {
                 listOf(

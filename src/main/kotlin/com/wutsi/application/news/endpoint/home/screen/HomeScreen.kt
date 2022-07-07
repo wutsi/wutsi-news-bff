@@ -35,7 +35,7 @@ import com.wutsi.platform.core.image.ImageService
 import com.wutsi.platform.core.image.Transformation
 import com.wutsi.platform.core.logging.KVLogger
 import com.wutsi.platform.core.tracing.TracingContext
-import com.wutsi.platform.tenant.dto.Tenant
+import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -60,7 +60,7 @@ class HomeScreen(
         logger.add("user_count", users.size)
 
         val tenant = tenantProvider.get()
-
+        val fmt = SimpleDateFormat(tenant.dateFormat, LocaleContextHolder.getLocale())
         return Screen(
             id = Page.HOME,
             backgroundColor = Theme.COLOR_GRAY_LIGHT,
@@ -74,7 +74,7 @@ class HomeScreen(
             child = SingleChildScrollView(
                 child = Column(
                     children = stories.map {
-                        toStoryCardWidget(it, users[it.userId], tenant)
+                        toStoryCardWidget(it, users[it.userId], fmt)
                     }
                 )
             ),
@@ -107,7 +107,7 @@ class HomeScreen(
             ).users
     }
 
-    private fun toStoryCardWidget(story: StorySummaryDto, author: UserSummaryDto?, tenant: Tenant): WidgetAware =
+    private fun toStoryCardWidget(story: StorySummaryDto, author: UserSummaryDto?, fmt: SimpleDateFormat): WidgetAware =
         toSectionWidget(
             padding = null,
             child = Column(
@@ -169,7 +169,7 @@ class HomeScreen(
                                 ),
                                 Container(padding = 5.0),
                                 Text(
-                                    caption = SimpleDateFormat(tenant.dateFormat).format(story.publishedDateTime),
+                                    caption = fmt.format(story.publishedDateTime),
                                     size = Theme.TEXT_SIZE_SMALL,
                                     color = Theme.COLOR_GRAY
                                 ),

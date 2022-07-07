@@ -125,7 +125,7 @@
                             {
                               "type": "Text",
                               "attributes": {
-                                "caption": "31 Dec. 1969",
+                                "caption": "31 Dec 1969",
                                 "color": "#95A5A6",
                                 "size": 10.0
                               },
@@ -254,7 +254,7 @@
                             {
                               "type": "Text",
                               "attributes": {
-                                "caption": "31 Dec. 1969",
+                                "caption": "31 Dec 1969",
                                 "color": "#95A5A6",
                                 "size": 10.0
                               },
@@ -383,7 +383,7 @@
                             {
                               "type": "Text",
                               "attributes": {
-                                "caption": "31 Dec. 1969",
+                                "caption": "31 Dec 1969",
                                 "color": "#95A5A6",
                                 "size": 10.0
                               },
