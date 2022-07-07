@@ -90,7 +90,7 @@
                   ],
                   "action": {
                     "type": "Route",
-                    "url": "http://localhost:0/?author-id=11"
+                    "url": "http://localhost:0/?user-id=11"
                   }
                 }
               ]

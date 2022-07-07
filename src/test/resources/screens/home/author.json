@@ -2,7 +2,8 @@
   "type": "Screen",
   "attributes": {
     "id": "page.news.home",
-    "safe": false
+    "safe": false,
+    "backgroundColor": "#e8e8e8"
   },
   "children": [
     {

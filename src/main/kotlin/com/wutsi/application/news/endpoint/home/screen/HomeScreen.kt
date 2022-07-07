@@ -59,6 +59,7 @@ class HomeScreen(
 
         return Screen(
             id = Page.HOME,
+            backgroundColor = Theme.COLOR_GRAY_LIGHT,
             appBar = AppBar(
                 elevation = 0.0,
                 backgroundColor = Theme.COLOR_WHITE,
@@ -72,7 +73,7 @@ class HomeScreen(
                         toStoryCardWidget(it, users[it.userId])
                     }
                 )
-            )
+            ),
         ).toWidget()
     }
 

@@ -89,7 +89,7 @@ class ReadScreen(
                                             color = Theme.COLOR_PRIMARY,
                                             decoration = TextDecoration.Underline
                                         ),
-                                        action = gotoUrl(urlBuilder.build("/?author-id=${story.userId}"))
+                                        action = gotoUrl(urlBuilder.build("/?user-id=${story.userId}"))
                                     )
                                 }
                             )
