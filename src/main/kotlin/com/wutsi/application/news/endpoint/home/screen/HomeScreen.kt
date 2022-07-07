@@ -35,10 +35,12 @@ import com.wutsi.platform.core.image.ImageService
 import com.wutsi.platform.core.image.Transformation
 import com.wutsi.platform.core.logging.KVLogger
 import com.wutsi.platform.core.tracing.TracingContext
+import com.wutsi.platform.tenant.dto.Tenant
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.text.SimpleDateFormat
 
 @RestController
 @RequestMapping("/")
@@ -57,6 +59,8 @@ class HomeScreen(
         val users = findUsers(stories).associateBy { it.id }
         logger.add("user_count", users.size)
 
+        val tenant = tenantProvider.get()
+
         return Screen(
             id = Page.HOME,
             backgroundColor = Theme.COLOR_GRAY_LIGHT,
@@ -70,7 +74,7 @@ class HomeScreen(
             child = SingleChildScrollView(
                 child = Column(
                     children = stories.map {
-                        toStoryCardWidget(it, users[it.userId])
+                        toStoryCardWidget(it, users[it.userId], tenant)
                     }
                 )
             ),
@@ -103,7 +107,7 @@ class HomeScreen(
             ).users
     }
 
-    private fun toStoryCardWidget(story: StorySummaryDto, author: UserSummaryDto?): WidgetAware =
+    private fun toStoryCardWidget(story: StorySummaryDto, author: UserSummaryDto?, tenant: Tenant): WidgetAware =
         toSectionWidget(
             padding = null,
             child = Column(
@@ -152,13 +156,25 @@ class HomeScreen(
                     ),
                     Container(
                         padding = 10.0,
-                        child = Text(
-                            caption = story.title ?: "",
-                            size = Theme.TEXT_SIZE_LARGE,
-                            bold = true,
-                            maxLines = 3,
-                            overflow = TextOverflow.Elipsis
-                        ),
+                        child = Column(
+                            mainAxisAlignment = MainAxisAlignment.start,
+                            crossAxisAlignment = CrossAxisAlignment.start,
+                            children = listOf(
+                                Text(
+                                    caption = story.title ?: "",
+                                    size = Theme.TEXT_SIZE_LARGE,
+                                    bold = true,
+                                    maxLines = 3,
+                                    overflow = TextOverflow.Elipsis
+                                ),
+                                Container(padding = 5.0),
+                                Text(
+                                    caption = SimpleDateFormat(tenant.dateFormat).format(story.publishedDateTime),
+                                    size = Theme.TEXT_SIZE_SMALL,
+                                    color = Theme.COLOR_GRAY
+                                ),
+                            )
+                        )
                     )
                 )
             ),

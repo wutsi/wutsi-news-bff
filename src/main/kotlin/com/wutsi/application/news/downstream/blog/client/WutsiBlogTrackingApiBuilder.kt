@@ -1,14 +1,13 @@
-package com.wutsi.application.news.config
+package com.wutsi.application.news.downstream.blog.client
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.wutsi.application.news.downstream.blog.client.WutsiBlogApi
 import com.wutsi.ecommerce.order.WutsiOrderApi
 import feign.RequestInterceptor
 import feign.codec.ErrorDecoder
 
-class WutsiBlogApiBuilder {
+class WutsiBlogTrackingApiBuilder {
     fun build(
-        env: WutsiBlogEnvironment,
+        env: WutsiBlogTrackingEnvironment,
         mapper: ObjectMapper,
         interceptors: List<RequestInterceptor> = emptyList(),
         errorDecoder: ErrorDecoder = ErrorDecoder.Default(),
@@ -42,5 +41,5 @@ class WutsiBlogApiBuilder {
                 followRedirects
             )
         )
-        .target(WutsiBlogApi::class.java, env.url)
+        .target(WutsiBlogTrackingApi::class.java, env.url)
 }

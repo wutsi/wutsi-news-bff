@@ -2,6 +2,8 @@ package com.wutsi.application.news.downstream.blog.client
 
 import com.wutsi.application.news.downstream.blog.dto.GetStoryResponse
 import com.wutsi.application.news.downstream.blog.dto.GetUserResponse
+import com.wutsi.application.news.downstream.blog.dto.RecommendStoryRequest
+import com.wutsi.application.news.downstream.blog.dto.RecommendStoryResponse
 import com.wutsi.application.news.downstream.blog.dto.SearchStoryRequest
 import com.wutsi.application.news.downstream.blog.dto.SearchStoryResponse
 import com.wutsi.application.news.downstream.blog.dto.SearchUserRequest
@@ -18,6 +20,10 @@ interface WutsiBlogApi {
     @RequestLine("GET /v1/story/{id}")
     @Headers(value = ["Content-Type: application/json"])
     fun getStory(@Param("id") id: Long): GetStoryResponse
+
+    @RequestLine("POST /v1/story/recommend")
+    @Headers(value = ["Content-Type: application/json"])
+    fun recommendStory(request: RecommendStoryRequest): RecommendStoryResponse
 
     @RequestLine("POST /v1/users/search")
     @Headers(value = ["Content-Type: application/json"])

@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.boot.test.web.server.LocalServerPort
+import java.util.Date
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 internal class HomeScreenTest : AbstractEndpointTest() {
@@ -57,7 +58,8 @@ internal class HomeScreenTest : AbstractEndpointTest() {
         id = id,
         title = title,
         thumbnailUrl = "https://www.img.png/$id.png",
-        userId = userId
+        userId = userId,
+        publishedDateTime = Date(),
     )
 
     private fun createUserSummary(id: Long, fullName: String) = UserSummaryDto(

@@ -1,4 +1,4 @@
-package com.wutsi.application.news.config
+package com.wutsi.application.news.downstream.blog.client
 
 enum class WutsiBlogEnvironment(
     val url: String,

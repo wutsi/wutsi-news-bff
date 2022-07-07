@@ -98,15 +98,40 @@
                       },
                       "children": [
                         {
-                          "type": "Text",
+                          "type": "Column",
                           "attributes": {
-                            "caption": "Story 1",
-                            "bold": true,
-                            "size": 16.0,
-                            "overflow": "Elipsis",
-                            "maxLines": 3
+                            "mainAxisAlignment": "start",
+                            "crossAxisAlignment": "start"
                           },
-                          "children": []
+                          "children": [
+                            {
+                              "type": "Text",
+                              "attributes": {
+                                "caption": "Story 1",
+                                "bold": true,
+                                "size": 16.0,
+                                "overflow": "Elipsis",
+                                "maxLines": 3
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "Container",
+                              "attributes": {
+                                "padding": 5.0
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "Text",
+                              "attributes": {
+                                "caption": "07 Jul. 2022",
+                                "color": "#95A5A6",
+                                "size": 10.0
+                              },
+                              "children": []
+                            }
+                          ]
                         }
                       ]
                     }
@@ -202,15 +227,40 @@
                       },
                       "children": [
                         {
-                          "type": "Text",
+                          "type": "Column",
                           "attributes": {
-                            "caption": "Story 2",
-                            "bold": true,
-                            "size": 16.0,
-                            "overflow": "Elipsis",
-                            "maxLines": 3
+                            "mainAxisAlignment": "start",
+                            "crossAxisAlignment": "start"
                           },
-                          "children": []
+                          "children": [
+                            {
+                              "type": "Text",
+                              "attributes": {
+                                "caption": "Story 2",
+                                "bold": true,
+                                "size": 16.0,
+                                "overflow": "Elipsis",
+                                "maxLines": 3
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "Container",
+                              "attributes": {
+                                "padding": 5.0
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "Text",
+                              "attributes": {
+                                "caption": "07 Jul. 2022",
+                                "color": "#95A5A6",
+                                "size": 10.0
+                              },
+                              "children": []
+                            }
+                          ]
                         }
                       ]
                     }
@@ -306,15 +356,40 @@
                       },
                       "children": [
                         {
-                          "type": "Text",
+                          "type": "Column",
                           "attributes": {
-                            "caption": "Story 3",
-                            "bold": true,
-                            "size": 16.0,
-                            "overflow": "Elipsis",
-                            "maxLines": 3
+                            "mainAxisAlignment": "start",
+                            "crossAxisAlignment": "start"
                           },
-                          "children": []
+                          "children": [
+                            {
+                              "type": "Text",
+                              "attributes": {
+                                "caption": "Story 3",
+                                "bold": true,
+                                "size": 16.0,
+                                "overflow": "Elipsis",
+                                "maxLines": 3
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "Container",
+                              "attributes": {
+                                "padding": 5.0
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "Text",
+                              "attributes": {
+                                "caption": "07 Jul. 2022",
+                                "color": "#95A5A6",
+                                "size": 10.0
+                              },
+                              "children": []
+                            }
+                          ]
                         }
                       ]
                     }
