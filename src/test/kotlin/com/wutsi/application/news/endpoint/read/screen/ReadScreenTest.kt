@@ -98,7 +98,7 @@ internal class ReadScreenTest : AbstractEndpointTest() {
         title = title,
         thumbnailUrl = "https://www.img.png/$id.png",
         userId = userId,
-        publishedDateTime = Date(),
+        publishedDateTime = Date(1000000),
     )
 
     private fun createStory(id: Long, userId: Long, title: String) = StoryDto(
@@ -106,7 +106,7 @@ internal class ReadScreenTest : AbstractEndpointTest() {
         title = title,
         userId = userId,
         content = toContent(),
-        publishedDateTime = Date(),
+        publishedDateTime = Date(1000000),
         readingMinutes = 1
     )
 

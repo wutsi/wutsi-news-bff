@@ -59,7 +59,7 @@ internal class HomeScreenTest : AbstractEndpointTest() {
         title = title,
         thumbnailUrl = "https://www.img.png/$id.png",
         userId = userId,
-        publishedDateTime = Date(),
+        publishedDateTime = Date(1000000),
     )
 
     private fun createUserSummary(id: Long, fullName: String) = UserSummaryDto(
