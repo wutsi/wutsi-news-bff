@@ -4,6 +4,7 @@ import com.wutsi.application.news.downstream.blog.client.WutsiBlogApi
 import com.wutsi.application.news.downstream.blog.dto.SearchStoryContext
 import com.wutsi.application.news.downstream.blog.dto.SearchStoryRequest
 import com.wutsi.application.news.downstream.blog.dto.SearchUserRequest
+import com.wutsi.application.news.downstream.blog.dto.StorySortStrategy
 import com.wutsi.application.news.downstream.blog.dto.StoryStatus
 import com.wutsi.application.news.downstream.blog.dto.StorySummaryDto
 import com.wutsi.application.news.downstream.blog.dto.UserSummaryDto
@@ -91,6 +92,7 @@ class HomeScreen(
                     deviceType = tracingContext.deviceId()
                 ),
                 limit = 100,
+                sortBy = StorySortStrategy.recommended
             )
         ).stories
 

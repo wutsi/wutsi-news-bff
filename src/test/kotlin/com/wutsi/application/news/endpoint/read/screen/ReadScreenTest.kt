@@ -2,16 +2,11 @@ package com.wutsi.application.news.endpoint.read.screen
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.times
-import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.wutsi.application.news.downstream.blog.client.WutsiBlogApi
-import com.wutsi.application.news.downstream.blog.client.WutsiBlogTrackingApi
 import com.wutsi.application.news.downstream.blog.dto.GetStoryResponse
 import com.wutsi.application.news.downstream.blog.dto.GetUserResponse
-import com.wutsi.application.news.downstream.blog.dto.PushTrackRequest
 import com.wutsi.application.news.downstream.blog.dto.RecommendStoryResponse
 import com.wutsi.application.news.downstream.blog.dto.StoryDto
 import com.wutsi.application.news.downstream.blog.dto.StorySummaryDto
@@ -30,8 +25,6 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.boot.test.web.server.LocalServerPort
 import java.io.StringWriter
 import java.util.Date
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 internal class ReadScreenTest : AbstractEndpointTest() {
@@ -40,9 +33,6 @@ internal class ReadScreenTest : AbstractEndpointTest() {
 
     @MockBean
     private lateinit var blogApi: WutsiBlogApi
-
-    @MockBean
-    private lateinit var blogTrackingApi: WutsiBlogTrackingApi
 
     val story = createStory(1, 11, "Sample Story")
 
@@ -69,22 +59,6 @@ internal class ReadScreenTest : AbstractEndpointTest() {
     fun index() {
         val url = "http://localhost:$port/read?id=1"
         assertEndpointEquals("/screens/read/index.json", url)
-
-        val req = argumentCaptor<PushTrackRequest>()
-        verify(blogTrackingApi, times(2)).push(req.capture())
-
-        assertEquals("page.read", req.firstValue.page)
-        assertEquals(DEVICE_ID, req.firstValue.duid)
-        assertEquals("1", req.firstValue.pid)
-        assertEquals("readstart", req.firstValue.event)
-        assertNotNull(req.firstValue.hid)
-
-        assertEquals("page.read", req.secondValue.page)
-        assertEquals(DEVICE_ID, req.secondValue.duid)
-        assertEquals(story.id.toString(), req.secondValue.pid)
-        assertEquals("readend", req.secondValue.event)
-        assertNotNull(req.secondValue.hid)
-        assertEquals((story.readingMinutes * 60 * 1000).toLong(), req.secondValue.time - req.firstValue.time)
     }
 
     private fun createUser(id: Long, fullName: String) = UserDto(

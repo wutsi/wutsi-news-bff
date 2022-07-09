@@ -1,11 +1,8 @@
 package com.wutsi.application.news.endpoint.read.screen
 
 import com.wutsi.application.news.downstream.blog.client.WutsiBlogApi
-import com.wutsi.application.news.downstream.blog.client.WutsiBlogTrackingApi
-import com.wutsi.application.news.downstream.blog.dto.PushTrackRequest
 import com.wutsi.application.news.downstream.blog.dto.RecommendStoryRequest
 import com.wutsi.application.news.downstream.blog.dto.SearchStoryContext
-import com.wutsi.application.news.downstream.blog.dto.StoryDto
 import com.wutsi.application.news.endpoint.AbstractQuery
 import com.wutsi.application.news.endpoint.Page
 import com.wutsi.application.shared.Theme
@@ -39,7 +36,6 @@ import com.wutsi.platform.core.image.ImageService
 import com.wutsi.platform.core.image.Transformation
 import com.wutsi.platform.core.tracing.TracingContext
 import com.wutsi.platform.tenant.dto.Tenant
-import org.slf4j.LoggerFactory
 import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -47,13 +43,11 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.io.StringWriter
 import java.text.SimpleDateFormat
-import java.util.UUID
 
 @RestController
 @RequestMapping("/read")
 class ReadScreen(
     private val blogApi: WutsiBlogApi,
-    private val blogTrackingApi: WutsiBlogTrackingApi,
     private val ejsHtmlWriter: EJSHtmlWriter,
     private val ejsJsonReader: EJSJsonReader,
     private val tracingContext: TracingContext,
@@ -63,8 +57,6 @@ class ReadScreen(
     companion object {
         const val RECOMMEND_IMAGE_WIDTH = 75.0
         const val RECOMMEND_IMAGE_HEIGHT = 75.0
-
-        private val LOGGER = LoggerFactory.getLogger(ReadScreen::class.java)
     }
 
     @PostMapping
@@ -73,106 +65,82 @@ class ReadScreen(
         val author = blogApi.getUser(story.userId).user
         val tenant = tenantProvider.get()
 
-        try {
-            return Screen(
-                id = Page.READ,
-                appBar = AppBar(
-                    elevation = 0.0,
-                    backgroundColor = Theme.COLOR_WHITE,
-                    foregroundColor = Theme.COLOR_BLACK,
-                    title = author.fullName.uppercase(),
-                ),
-                bottomNavigationBar = bottomNavigationBar(),
-                child = SingleChildScrollView(
-                    child = Column(
-                        mainAxisAlignment = MainAxisAlignment.start,
-                        crossAxisAlignment = CrossAxisAlignment.start,
-                        children = listOfNotNull(
+        return Screen(
+            id = Page.READ,
+            appBar = AppBar(
+                elevation = 0.0,
+                backgroundColor = Theme.COLOR_WHITE,
+                foregroundColor = Theme.COLOR_BLACK,
+                title = author.fullName.uppercase(),
+            ),
+            bottomNavigationBar = bottomNavigationBar(),
+            child = SingleChildScrollView(
+                child = Column(
+                    mainAxisAlignment = MainAxisAlignment.start,
+                    crossAxisAlignment = CrossAxisAlignment.start,
+                    children = listOfNotNull(
+                        Container(
+                            padding = 10.0,
+                            child = Text(
+                                caption = story.title ?: "",
+                                size = Theme.TEXT_SIZE_LARGE,
+                                bold = true,
+                                maxLines = 3,
+                                overflow = TextOverflow.Elipsis
+                            ),
+                        ),
+                        if (story.tagline.isNullOrEmpty())
+                            null
+                        else
                             Container(
                                 padding = 10.0,
+                                alignment = Alignment.Center,
                                 child = Text(
-                                    caption = story.title ?: "",
-                                    size = Theme.TEXT_SIZE_LARGE,
-                                    bold = true,
-                                    maxLines = 3,
-                                    overflow = TextOverflow.Elipsis
+                                    caption = story.tagline,
+                                    color = Theme.COLOR_GRAY,
+                                    italic = true,
+                                    alignment = TextAlignment.Center
                                 ),
                             ),
-                            if (story.tagline.isNullOrEmpty())
-                                null
-                            else
-                                Container(
-                                    padding = 10.0,
-                                    alignment = Alignment.Center,
-                                    child = Text(
-                                        caption = story.tagline,
-                                        color = Theme.COLOR_GRAY,
-                                        italic = true,
-                                        alignment = TextAlignment.Center
-                                    ),
-                                ),
 
-                            Row(
-                                children = listOfNotNull(
-                                    Container(padding = 10.0),
-                                    author.let {
-                                        Avatar(
-                                            model = AccountModel(
-                                                id = it.id,
-                                                displayName = it.fullName,
-                                                pictureUrl = it.pictureUrl
-                                            ),
-                                            radius = 12.0,
-                                            action = gotoUrl(urlBuilder.build("/?author-id=${story.userId}"))
-                                        )
-                                    },
-                                    Container(padding = 5.0),
-                                    author.let {
-                                        Container(
-                                            child = Text(
-                                                caption = it.fullName.uppercase(),
-                                                size = Theme.TEXT_SIZE_SMALL,
-                                                overflow = TextOverflow.Elipsis,
-                                                color = Theme.COLOR_PRIMARY,
-                                                decoration = TextDecoration.Underline
-                                            ),
-                                            action = gotoUrl(urlBuilder.build("/?user-id=${story.userId}"))
-                                        )
-                                    }
-                                )
-                            ),
-                            Divider(color = Theme.COLOR_DIVIDER),
-                            Html(
-                                data = story.content?.let { toHtml(it) }
-                            ),
-                            toRecommendWidget(id, tenant)
-                        )
+                        Row(
+                            children = listOfNotNull(
+                                Container(padding = 10.0),
+                                author.let {
+                                    Avatar(
+                                        model = AccountModel(
+                                            id = it.id,
+                                            displayName = it.fullName,
+                                            pictureUrl = it.pictureUrl
+                                        ),
+                                        radius = 12.0,
+                                        action = gotoUrl(urlBuilder.build("/?author-id=${story.userId}"))
+                                    )
+                                },
+                                Container(padding = 5.0),
+                                author.let {
+                                    Container(
+                                        child = Text(
+                                            caption = it.fullName.uppercase(),
+                                            size = Theme.TEXT_SIZE_SMALL,
+                                            overflow = TextOverflow.Elipsis,
+                                            color = Theme.COLOR_PRIMARY,
+                                            decoration = TextDecoration.Underline
+                                        ),
+                                        action = gotoUrl(urlBuilder.build("/?user-id=${story.userId}"))
+                                    )
+                                }
+                            )
+                        ),
+                        Divider(color = Theme.COLOR_DIVIDER),
+                        Html(
+                            data = story.content?.let { toHtml(it) }
+                        ),
+                        toRecommendWidget(id, tenant)
                     )
                 )
-            ).toWidget()
-        } finally {
-            // Send tracking event to wutsi-blog so that it knows that this device read the story
-            val now = System.currentTimeMillis()
-            trackEvent(id, now, "readstart")
-            trackEvent(id, now + story.readingMinutes * 60 * 1000, "readend")
-        }
-    }
-
-    private fun trackEvent(id: Long, time: Long, event: String) {
-        try {
-            blogTrackingApi.push(
-                request = PushTrackRequest(
-                    time = time,
-                    duid = tracingContext.deviceId(),
-                    pid = id.toString(),
-                    hid = UUID.randomUUID().toString(),
-                    page = "page.read",
-                    event = event
-                )
             )
-        } catch (ex: Exception) {
-            LOGGER.warn("Unable to push tracking event", ex)
-        }
+        ).toWidget()
     }
 
     private fun toHtml(json: String): String {
@@ -269,7 +237,4 @@ class ReadScreen(
             children = children
         )
     }
-
-    private fun toStoryWidget(story: StoryDto, tenant: Tenant): WidgetAware =
-        TODO()
 }
