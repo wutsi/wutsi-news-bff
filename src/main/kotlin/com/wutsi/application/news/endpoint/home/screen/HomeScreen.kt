@@ -93,7 +93,7 @@ class HomeScreen(
                 ),
                 limit = 100,
                 sortBy = StorySortStrategy.recommended,
-                dedupUser = true
+                dedupUser = (userId == null)
             )
         ).stories
 
