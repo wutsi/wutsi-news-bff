@@ -156,7 +156,7 @@ class ReadScreen(
                 storyId = id,
                 context = SearchStoryContext(
                     deviceId = tracingContext.deviceId()
-                )
+                ),
             )
         ).stories
             .filter { !it.thumbnailUrl.isNullOrEmpty() && !it.title.isNullOrEmpty() }

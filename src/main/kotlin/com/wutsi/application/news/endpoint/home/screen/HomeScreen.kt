@@ -92,7 +92,8 @@ class HomeScreen(
                     deviceType = tracingContext.deviceId()
                 ),
                 limit = 100,
-                sortBy = StorySortStrategy.recommended
+                sortBy = StorySortStrategy.recommended,
+                dedupUser = true
             )
         ).stories
 
