@@ -89,7 +89,7 @@ class HomeScreen(
                 userIds = userId?.let { listOf(it) } ?: emptyList(),
                 status = StoryStatus.published,
                 context = SearchStoryContext(
-                    deviceType = tracingContext.deviceId()
+                    deviceId = tracingContext.deviceId()
                 ),
                 limit = 100,
                 sortBy = StorySortStrategy.recommended,
