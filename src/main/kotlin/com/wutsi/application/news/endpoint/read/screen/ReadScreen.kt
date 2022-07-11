@@ -85,7 +85,7 @@ class ReadScreen(
                                 caption = story.title ?: "",
                                 size = Theme.TEXT_SIZE_LARGE,
                                 bold = true,
-                                maxLines = 3,
+                                maxLines = 5,
                                 overflow = TextOverflow.Elipsis
                             ),
                         ),

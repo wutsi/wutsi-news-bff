@@ -111,7 +111,7 @@
                                 "bold": true,
                                 "size": 16.0,
                                 "overflow": "Elipsis",
-                                "maxLines": 3
+                                "maxLines": 5
                               },
                               "children": []
                             },
@@ -240,7 +240,7 @@
                                 "bold": true,
                                 "size": 16.0,
                                 "overflow": "Elipsis",
-                                "maxLines": 3
+                                "maxLines": 5
                               },
                               "children": []
                             },
@@ -369,7 +369,7 @@
                                 "bold": true,
                                 "size": 16.0,
                                 "overflow": "Elipsis",
-                                "maxLines": 3
+                                "maxLines": 5
                               },
                               "children": []
                             },
