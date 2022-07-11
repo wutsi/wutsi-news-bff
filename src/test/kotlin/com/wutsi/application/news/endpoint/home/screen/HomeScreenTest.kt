@@ -31,13 +31,15 @@ internal class HomeScreenTest : AbstractEndpointTest() {
         val stories = listOf(
             createStorySummary(1, 11, "Story 1"),
             createStorySummary(2, 11, "Story 2"),
-            createStorySummary(3, 13, "Story 3")
+            createStorySummary(3, 13, "Story 3"),
+            createStorySummary(4, 14, "Story 4", null)
         )
         doReturn(SearchStoryResponse(stories)).whenever(blogApi).searchStories(any())
 
         val users = listOf(
             createUserSummary(11, "User 11"),
             createUserSummary(13, "User 13"),
+            createUserSummary(14, "User 14"),
         )
         doReturn(SearchUserResponse(users)).whenever(blogApi).searchUsers(any())
     }
@@ -54,10 +56,15 @@ internal class HomeScreenTest : AbstractEndpointTest() {
         assertEndpointEquals("/screens/home/author.json", url)
     }
 
-    private fun createStorySummary(id: Long, userId: Long, title: String) = StorySummaryDto(
+    private fun createStorySummary(
+        id: Long,
+        userId: Long,
+        title: String,
+        thumbnailUrl: String? = "https://www.img.png/$id.png"
+    ) = StorySummaryDto(
         id = id,
         title = title,
-        thumbnailUrl = "https://www.img.png/$id.png",
+        thumbnailUrl = thumbnailUrl,
         userId = userId,
         publishedDateTime = Date(1657228348000),
     )

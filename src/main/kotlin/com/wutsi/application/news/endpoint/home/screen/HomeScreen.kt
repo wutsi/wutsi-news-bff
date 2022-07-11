@@ -54,7 +54,7 @@ class HomeScreen(
 ) : AbstractQuery() {
     @PostMapping
     fun index(@RequestParam("user-id") userId: Long? = null): Widget {
-        val stories = findStories(userId)
+        val stories = findStories(userId, userId != null)
         logger.add("story_count", stories.size)
 
         val users = findUsers(stories).associateBy { it.id }
@@ -82,7 +82,7 @@ class HomeScreen(
         ).toWidget()
     }
 
-    private fun findStories(userId: Long?): List<StorySummaryDto> =
+    private fun findStories(userId: Long?, includeStoriesWithNoThumbnail: Boolean): List<StorySummaryDto> =
         blogApi.searchStories(
             request = SearchStoryRequest(
                 siteId = tenantProvider.tenantId(),
@@ -95,7 +95,7 @@ class HomeScreen(
                 sortBy = StorySortStrategy.recommended,
                 dedupUser = (userId == null)
             )
-        ).stories
+        ).stories.filter { includeStoriesWithNoThumbnail || !it.thumbnailUrl.isNullOrEmpty() }
 
     private fun findUsers(stories: List<StorySummaryDto>): List<UserSummaryDto> {
         val userIds = stories.map { it.userId }.toSet()
