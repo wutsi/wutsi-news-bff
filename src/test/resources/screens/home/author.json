@@ -400,6 +400,120 @@
                 "type": "Route",
                 "url": "http://localhost:0/read?id=3"
               }
+            },
+            {
+              "type": "Container",
+              "attributes": {
+                "margin": 5.0,
+                "background": "#FFFFFF",
+                "border": 1.0,
+                "borderColor": "#e8e8e8",
+                "width": 1.7976931348623157E308
+              },
+              "children": [
+                {
+                  "type": "Column",
+                  "attributes": {
+                    "mainAxisAlignment": "start",
+                    "mainAxisSize": "min",
+                    "crossAxisAlignment": "start"
+                  },
+                  "children": [
+                    {
+                      "type": "Container",
+                      "attributes": {
+                        "padding": 10.0
+                      },
+                      "children": [
+                        {
+                          "type": "Row",
+                          "attributes": {},
+                          "children": [
+                            {
+                              "type": "CircleAvatar",
+                              "attributes": {
+                                "radius": 12.0
+                              },
+                              "children": [
+                                {
+                                  "type": "Image",
+                                  "attributes": {
+                                    "url": "https://www.img.png/14.png"
+                                  },
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Container",
+                              "attributes": {
+                                "padding": 5.0
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "Text",
+                              "attributes": {
+                                "caption": "USER 14",
+                                "size": 10.0
+                              },
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Container",
+                      "attributes": {
+                        "padding": 10.0
+                      },
+                      "children": [
+                        {
+                          "type": "Column",
+                          "attributes": {
+                            "mainAxisAlignment": "start",
+                            "crossAxisAlignment": "start"
+                          },
+                          "children": [
+                            {
+                              "type": "Text",
+                              "attributes": {
+                                "caption": "Story 4",
+                                "bold": true,
+                                "size": 16.0,
+                                "overflow": "Elipsis",
+                                "maxLines": 3
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "Container",
+                              "attributes": {
+                                "padding": 5.0
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "Text",
+                              "attributes": {
+                                "caption": "07 Jul 2022",
+                                "color": "#95A5A6",
+                                "size": 10.0
+                              },
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "action": {
+                "type": "Route",
+                "url": "http://localhost:0/read?id=4"
+              }
             }
           ]
         }
@@ -409,7 +523,7 @@
   "appBar": {
     "type": "AppBar",
     "attributes": {
-      "title": "News",
+      "title": "USER 11",
       "elevation": 0.0,
       "backgroundColor": "#FFFFFF",
       "foregroundColor": "#000000"

@@ -69,7 +69,7 @@ class HomeScreen(
                 elevation = 0.0,
                 backgroundColor = Theme.COLOR_WHITE,
                 foregroundColor = Theme.COLOR_BLACK,
-                title = userId?.let { users[it]?.fullName } ?: getText("page.home.app-bar.title"),
+                title = userId?.let { users[it]?.fullName?.uppercase() } ?: getText("page.home.app-bar.title"),
             ),
             bottomNavigationBar = bottomNavigationBar(),
             child = SingleChildScrollView(

@@ -52,7 +52,7 @@ internal class HomeScreenTest : AbstractEndpointTest() {
 
     @Test
     fun author() {
-        val url = "http://localhost:$port?author-id=11"
+        val url = "http://localhost:$port?user-id=11"
         assertEndpointEquals("/screens/home/author.json", url)
     }
 
