@@ -9,8 +9,10 @@ import com.wutsi.application.shared.Theme
 import com.wutsi.application.shared.model.AccountModel
 import com.wutsi.application.shared.service.TenantProvider
 import com.wutsi.application.shared.ui.Avatar
+import com.wutsi.application.shared.ui.TitleBarAction
 import com.wutsi.editorjs.html.EJSHtmlWriter
 import com.wutsi.editorjs.json.EJSJsonReader
+import com.wutsi.flutter.sdui.Action
 import com.wutsi.flutter.sdui.AppBar
 import com.wutsi.flutter.sdui.Column
 import com.wutsi.flutter.sdui.Container
@@ -24,6 +26,7 @@ import com.wutsi.flutter.sdui.SingleChildScrollView
 import com.wutsi.flutter.sdui.Text
 import com.wutsi.flutter.sdui.Widget
 import com.wutsi.flutter.sdui.WidgetAware
+import com.wutsi.flutter.sdui.enums.ActionType
 import com.wutsi.flutter.sdui.enums.Alignment
 import com.wutsi.flutter.sdui.enums.BoxFit
 import com.wutsi.flutter.sdui.enums.CrossAxisAlignment
@@ -72,6 +75,15 @@ class ReadScreen(
                 backgroundColor = Theme.COLOR_WHITE,
                 foregroundColor = Theme.COLOR_BLACK,
                 title = author.fullName.uppercase(),
+                actions = listOf(
+                    TitleBarAction(
+                        icon = Theme.ICON_SHARE,
+                        action = Action(
+                            type = ActionType.Share,
+                            url = "${tenant.webappUrl}/story/read?id=$id",
+                        )
+                    )
+                )
             ),
             bottomNavigationBar = bottomNavigationBar(),
             child = SingleChildScrollView(

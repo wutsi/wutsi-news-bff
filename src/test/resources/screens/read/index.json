@@ -438,7 +438,38 @@
       "title": "RAY SPONSIBLE",
       "elevation": 0.0,
       "backgroundColor": "#FFFFFF",
-      "foregroundColor": "#000000"
+      "foregroundColor": "#000000",
+      "actions": [
+        {
+          "type": "Container",
+          "attributes": {
+            "padding": 4.0
+          },
+          "children": [
+            {
+              "type": "CircleAvatar",
+              "attributes": {
+                "radius": 20.0,
+                "backgroundColor": "#e4edf7"
+              },
+              "children": [
+                {
+                  "type": "IconButton",
+                  "attributes": {
+                    "icon": "ea47",
+                    "size": 20.0
+                  },
+                  "children": [],
+                  "action": {
+                    "type": "Share",
+                    "url": "https://www.wutsi.me/story/read?id=1"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     "children": []
   },
