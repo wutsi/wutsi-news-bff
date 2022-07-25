@@ -28,6 +28,7 @@ import com.wutsi.flutter.sdui.WidgetAware
 import com.wutsi.flutter.sdui.enums.CrossAxisAlignment
 import com.wutsi.flutter.sdui.enums.MainAxisAlignment
 import com.wutsi.flutter.sdui.enums.MainAxisSize
+import com.wutsi.flutter.sdui.enums.TextDecoration
 import com.wutsi.flutter.sdui.enums.TextOverflow
 import com.wutsi.platform.core.image.AspectRatio
 import com.wutsi.platform.core.image.Dimension
@@ -151,10 +152,15 @@ class HomeScreen(
                                 author?.let {
                                     Text(
                                         caption = it.fullName.uppercase(),
-                                        size = Theme.TEXT_SIZE_SMALL
+                                        size = Theme.TEXT_SIZE_SMALL,
+                                        color = Theme.COLOR_PRIMARY,
+                                        decoration = TextDecoration.Underline
                                     )
                                 }
                             )
+                        ),
+                        action = gotoUrl(
+                            urlBuilder.build("?user-id=${story.userId}")
                         )
                     ),
                     Container(

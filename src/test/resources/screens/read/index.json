@@ -62,7 +62,7 @@
                   ],
                   "action": {
                     "type": "Route",
-                    "url": "http://localhost:0/?author-id=11"
+                    "url": "http://localhost:0/?user-id=11"
                   }
                 },
                 {
@@ -110,320 +110,422 @@
               "children": []
             },
             {
-              "type": "Column",
+              "type": "Container",
               "attributes": {
-                "mainAxisAlignment": "start",
-                "crossAxisAlignment": "start"
+                "padding": 10.0,
+                "margin": 5.0,
+                "background": "#FFFFFF",
+                "border": 1.0,
+                "borderColor": "#e8e8e8",
+                "width": 1.7976931348623157E308
               },
               "children": [
                 {
-                  "type": "Divider",
+                  "type": "Column",
                   "attributes": {
-                    "height": 1.0,
-                    "color": "#8c8c8c"
-                  },
-                  "children": []
-                },
-                {
-                  "type": "Container",
-                  "attributes": {
-                    "padding": 10.0
+                    "mainAxisAlignment": "start",
+                    "crossAxisAlignment": "start"
                   },
                   "children": [
                     {
-                      "type": "Text",
+                      "type": "Container",
                       "attributes": {
-                        "caption": "Read Also",
-                        "size": 16.0
+                        "padding": 10.0
                       },
-                      "children": []
+                      "children": [
+                        {
+                          "type": "Row",
+                          "attributes": {},
+                          "children": [
+                            {
+                              "type": "CircleAvatar",
+                              "attributes": {
+                                "radius": 12.0
+                              },
+                              "children": [
+                                {
+                                  "type": "Image",
+                                  "attributes": {
+                                    "url": "https://www.img.png/11.png"
+                                  },
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Container",
+                              "attributes": {
+                                "padding": 5.0
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "Text",
+                              "attributes": {
+                                "caption": "RAY SPONSIBLE",
+                                "color": "#1D7EDF",
+                                "size": 10.0,
+                                "decoration": "Underline"
+                              },
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Column",
+                      "attributes": {
+                        "mainAxisAlignment": "start",
+                        "crossAxisAlignment": "start"
+                      },
+                      "children": [
+                        {
+                          "type": "Center",
+                          "attributes": {},
+                          "children": [
+                            {
+                              "type": "Button",
+                              "attributes": {
+                                "caption": "Read Stories",
+                                "padding": 5.0,
+                                "type": "Elevated",
+                                "stretched": false
+                              },
+                              "children": [],
+                              "action": {
+                                "type": "Route",
+                                "url": "http://localhost:0/?user-id=11"
+                              }
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
-                },
+                }
+              ]
+            },
+            {
+              "type": "Container",
+              "attributes": {
+                "padding": 10.0,
+                "margin": 5.0,
+                "background": "#FFFFFF",
+                "border": 1.0,
+                "borderColor": "#e8e8e8",
+                "width": 1.7976931348623157E308
+              },
+              "children": [
                 {
-                  "type": "Container",
+                  "type": "Column",
                   "attributes": {
-                    "padding": 10.0
+                    "mainAxisAlignment": "start",
+                    "crossAxisAlignment": "start"
                   },
                   "children": [
                     {
-                      "type": "Row",
+                      "type": "Container",
                       "attributes": {
-                        "mainAxisAlignment": "start",
-                        "crossAxisAlignment": "start"
+                        "padding": 10.0
                       },
                       "children": [
                         {
-                          "type": "Flexible",
+                          "type": "Text",
                           "attributes": {
-                            "flex": 3,
-                            "fit": "Tight"
+                            "caption": "Read Also",
+                            "size": 16.0
                           },
-                          "children": [
-                            {
-                              "type": "Image",
-                              "attributes": {
-                                "url": "https://www.img.png/11.png",
-                                "fit": "cover"
-                              },
-                              "children": []
-                            }
-                          ]
-                        },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Container",
+                      "attributes": {
+                        "padding": 10.0
+                      },
+                      "children": [
                         {
-                          "type": "Flexible",
+                          "type": "Row",
                           "attributes": {
-                            "flex": 1,
-                            "fit": "Tight"
+                            "mainAxisAlignment": "start",
+                            "crossAxisAlignment": "start"
                           },
                           "children": [
                             {
-                              "type": "Container",
-                              "attributes": {},
-                              "children": []
-                            }
-                          ]
-                        },
-                        {
-                          "type": "Flexible",
-                          "attributes": {
-                            "flex": 8,
-                            "fit": "Tight"
-                          },
-                          "children": [
-                            {
-                              "type": "Column",
+                              "type": "Flexible",
                               "attributes": {
-                                "mainAxisAlignment": "start",
-                                "crossAxisAlignment": "start"
+                                "flex": 3,
+                                "fit": "Tight"
                               },
                               "children": [
                                 {
-                                  "type": "Text",
+                                  "type": "Image",
                                   "attributes": {
-                                    "caption": "Story 11",
-                                    "bold": true,
-                                    "maxLines": 3
+                                    "url": "https://www.img.png/11.png",
+                                    "fit": "cover"
                                   },
                                   "children": []
-                                },
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Flexible",
+                              "attributes": {
+                                "flex": 1,
+                                "fit": "Tight"
+                              },
+                              "children": [
                                 {
                                   "type": "Container",
-                                  "attributes": {
-                                    "padding": 10.0
-                                  },
+                                  "attributes": {},
                                   "children": []
-                                },
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Flexible",
+                              "attributes": {
+                                "flex": 8,
+                                "fit": "Tight"
+                              },
+                              "children": [
                                 {
-                                  "type": "Text",
+                                  "type": "Column",
                                   "attributes": {
-                                    "caption": "07 Jul 2022",
-                                    "color": "#95A5A6",
-                                    "size": 10.0
+                                    "mainAxisAlignment": "start",
+                                    "crossAxisAlignment": "start"
                                   },
-                                  "children": []
+                                  "children": [
+                                    {
+                                      "type": "Text",
+                                      "attributes": {
+                                        "caption": "Story 11",
+                                        "bold": true,
+                                        "maxLines": 3
+                                      },
+                                      "children": []
+                                    },
+                                    {
+                                      "type": "Container",
+                                      "attributes": {
+                                        "padding": 10.0
+                                      },
+                                      "children": []
+                                    },
+                                    {
+                                      "type": "Text",
+                                      "attributes": {
+                                        "caption": "07 Jul 2022",
+                                        "color": "#95A5A6",
+                                        "size": 10.0
+                                      },
+                                      "children": []
+                                    }
+                                  ]
                                 }
                               ]
                             }
                           ]
                         }
-                      ]
-                    }
-                  ],
-                  "action": {
-                    "type": "Route",
-                    "url": "http://localhost:0/read?id=11"
-                  }
-                },
-                {
-                  "type": "Container",
-                  "attributes": {
-                    "padding": 10.0
-                  },
-                  "children": [
+                      ],
+                      "action": {
+                        "type": "Route",
+                        "url": "http://localhost:0/read?id=11"
+                      }
+                    },
                     {
-                      "type": "Row",
+                      "type": "Container",
                       "attributes": {
-                        "mainAxisAlignment": "start",
-                        "crossAxisAlignment": "start"
+                        "padding": 10.0
                       },
                       "children": [
                         {
-                          "type": "Flexible",
+                          "type": "Row",
                           "attributes": {
-                            "flex": 3,
-                            "fit": "Tight"
+                            "mainAxisAlignment": "start",
+                            "crossAxisAlignment": "start"
                           },
                           "children": [
                             {
-                              "type": "Image",
+                              "type": "Flexible",
                               "attributes": {
-                                "url": "https://www.img.png/12.png",
-                                "fit": "cover"
-                              },
-                              "children": []
-                            }
-                          ]
-                        },
-                        {
-                          "type": "Flexible",
-                          "attributes": {
-                            "flex": 1,
-                            "fit": "Tight"
-                          },
-                          "children": [
-                            {
-                              "type": "Container",
-                              "attributes": {},
-                              "children": []
-                            }
-                          ]
-                        },
-                        {
-                          "type": "Flexible",
-                          "attributes": {
-                            "flex": 8,
-                            "fit": "Tight"
-                          },
-                          "children": [
-                            {
-                              "type": "Column",
-                              "attributes": {
-                                "mainAxisAlignment": "start",
-                                "crossAxisAlignment": "start"
+                                "flex": 3,
+                                "fit": "Tight"
                               },
                               "children": [
                                 {
-                                  "type": "Text",
+                                  "type": "Image",
                                   "attributes": {
-                                    "caption": "Story 12",
-                                    "bold": true,
-                                    "maxLines": 3
+                                    "url": "https://www.img.png/12.png",
+                                    "fit": "cover"
                                   },
                                   "children": []
-                                },
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Flexible",
+                              "attributes": {
+                                "flex": 1,
+                                "fit": "Tight"
+                              },
+                              "children": [
                                 {
                                   "type": "Container",
-                                  "attributes": {
-                                    "padding": 10.0
-                                  },
+                                  "attributes": {},
                                   "children": []
-                                },
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Flexible",
+                              "attributes": {
+                                "flex": 8,
+                                "fit": "Tight"
+                              },
+                              "children": [
                                 {
-                                  "type": "Text",
+                                  "type": "Column",
                                   "attributes": {
-                                    "caption": "07 Jul 2022",
-                                    "color": "#95A5A6",
-                                    "size": 10.0
+                                    "mainAxisAlignment": "start",
+                                    "crossAxisAlignment": "start"
                                   },
-                                  "children": []
+                                  "children": [
+                                    {
+                                      "type": "Text",
+                                      "attributes": {
+                                        "caption": "Story 12",
+                                        "bold": true,
+                                        "maxLines": 3
+                                      },
+                                      "children": []
+                                    },
+                                    {
+                                      "type": "Container",
+                                      "attributes": {
+                                        "padding": 10.0
+                                      },
+                                      "children": []
+                                    },
+                                    {
+                                      "type": "Text",
+                                      "attributes": {
+                                        "caption": "07 Jul 2022",
+                                        "color": "#95A5A6",
+                                        "size": 10.0
+                                      },
+                                      "children": []
+                                    }
+                                  ]
                                 }
                               ]
                             }
                           ]
                         }
-                      ]
-                    }
-                  ],
-                  "action": {
-                    "type": "Route",
-                    "url": "http://localhost:0/read?id=12"
-                  }
-                },
-                {
-                  "type": "Container",
-                  "attributes": {
-                    "padding": 10.0
-                  },
-                  "children": [
+                      ],
+                      "action": {
+                        "type": "Route",
+                        "url": "http://localhost:0/read?id=12"
+                      }
+                    },
                     {
-                      "type": "Row",
+                      "type": "Container",
                       "attributes": {
-                        "mainAxisAlignment": "start",
-                        "crossAxisAlignment": "start"
+                        "padding": 10.0
                       },
                       "children": [
                         {
-                          "type": "Flexible",
+                          "type": "Row",
                           "attributes": {
-                            "flex": 3,
-                            "fit": "Tight"
+                            "mainAxisAlignment": "start",
+                            "crossAxisAlignment": "start"
                           },
                           "children": [
                             {
-                              "type": "Image",
+                              "type": "Flexible",
                               "attributes": {
-                                "url": "https://www.img.png/13.png",
-                                "fit": "cover"
-                              },
-                              "children": []
-                            }
-                          ]
-                        },
-                        {
-                          "type": "Flexible",
-                          "attributes": {
-                            "flex": 1,
-                            "fit": "Tight"
-                          },
-                          "children": [
-                            {
-                              "type": "Container",
-                              "attributes": {},
-                              "children": []
-                            }
-                          ]
-                        },
-                        {
-                          "type": "Flexible",
-                          "attributes": {
-                            "flex": 8,
-                            "fit": "Tight"
-                          },
-                          "children": [
-                            {
-                              "type": "Column",
-                              "attributes": {
-                                "mainAxisAlignment": "start",
-                                "crossAxisAlignment": "start"
+                                "flex": 3,
+                                "fit": "Tight"
                               },
                               "children": [
                                 {
-                                  "type": "Text",
+                                  "type": "Image",
                                   "attributes": {
-                                    "caption": "Story 13",
-                                    "bold": true,
-                                    "maxLines": 3
+                                    "url": "https://www.img.png/13.png",
+                                    "fit": "cover"
                                   },
                                   "children": []
-                                },
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Flexible",
+                              "attributes": {
+                                "flex": 1,
+                                "fit": "Tight"
+                              },
+                              "children": [
                                 {
                                   "type": "Container",
-                                  "attributes": {
-                                    "padding": 10.0
-                                  },
+                                  "attributes": {},
                                   "children": []
-                                },
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Flexible",
+                              "attributes": {
+                                "flex": 8,
+                                "fit": "Tight"
+                              },
+                              "children": [
                                 {
-                                  "type": "Text",
+                                  "type": "Column",
                                   "attributes": {
-                                    "caption": "07 Jul 2022",
-                                    "color": "#95A5A6",
-                                    "size": 10.0
+                                    "mainAxisAlignment": "start",
+                                    "crossAxisAlignment": "start"
                                   },
-                                  "children": []
+                                  "children": [
+                                    {
+                                      "type": "Text",
+                                      "attributes": {
+                                        "caption": "Story 13",
+                                        "bold": true,
+                                        "maxLines": 3
+                                      },
+                                      "children": []
+                                    },
+                                    {
+                                      "type": "Container",
+                                      "attributes": {
+                                        "padding": 10.0
+                                      },
+                                      "children": []
+                                    },
+                                    {
+                                      "type": "Text",
+                                      "attributes": {
+                                        "caption": "07 Jul 2022",
+                                        "color": "#95A5A6",
+                                        "size": 10.0
+                                      },
+                                      "children": []
+                                    }
+                                  ]
                                 }
                               ]
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "action": {
+                        "type": "Route",
+                        "url": "http://localhost:0/read?id=13"
+                      }
                     }
-                  ],
-                  "action": {
-                    "type": "Route",
-                    "url": "http://localhost:0/read?id=13"
-                  }
+                  ]
                 }
               ]
             }

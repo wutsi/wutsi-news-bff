@@ -3,6 +3,10 @@ package com.wutsi.application.news.endpoint.read.screen
 import com.wutsi.application.news.downstream.blog.client.WutsiBlogApi
 import com.wutsi.application.news.downstream.blog.dto.RecommendStoryRequest
 import com.wutsi.application.news.downstream.blog.dto.SearchStoryContext
+import com.wutsi.application.news.downstream.blog.dto.SearchStoryRequest
+import com.wutsi.application.news.downstream.blog.dto.StorySortStrategy
+import com.wutsi.application.news.downstream.blog.dto.StoryStatus
+import com.wutsi.application.news.downstream.blog.dto.UserDto
 import com.wutsi.application.news.endpoint.AbstractQuery
 import com.wutsi.application.news.endpoint.Page
 import com.wutsi.application.shared.Theme
@@ -14,6 +18,8 @@ import com.wutsi.editorjs.html.EJSHtmlWriter
 import com.wutsi.editorjs.json.EJSJsonReader
 import com.wutsi.flutter.sdui.Action
 import com.wutsi.flutter.sdui.AppBar
+import com.wutsi.flutter.sdui.Button
+import com.wutsi.flutter.sdui.Center
 import com.wutsi.flutter.sdui.Column
 import com.wutsi.flutter.sdui.Container
 import com.wutsi.flutter.sdui.Divider
@@ -126,7 +132,7 @@ class ReadScreen(
                                             pictureUrl = it.pictureUrl
                                         ),
                                         radius = 12.0,
-                                        action = gotoUrl(urlBuilder.build("/?author-id=${story.userId}"))
+                                        action = gotoUrl(urlBuilder.build("/?user-id=${story.userId}"))
                                     )
                                 },
                                 Container(padding = 5.0),
@@ -148,6 +154,7 @@ class ReadScreen(
                         Html(
                             data = story.content?.let { toHtml(it) }
                         ),
+                        toAuthorWidget(author),
                         toRecommendWidget(id, tenant)
                     )
                 )
@@ -163,6 +170,7 @@ class ReadScreen(
     }
 
     private fun toRecommendWidget(id: Long, tenant: Tenant): WidgetAware? {
+        val maxRecommendations = 3
         val stories = blogApi.recommendStory(
             request = RecommendStoryRequest(
                 storyId = id,
@@ -172,15 +180,35 @@ class ReadScreen(
             )
         ).stories
             .filter { !it.thumbnailUrl.isNullOrEmpty() && !it.title.isNullOrEmpty() }
-            .take(3)
+            .take(maxRecommendations)
+            .toMutableList()
+
+        if (stories.size < maxRecommendations) {
+            // Not enough stories, add the latest
+            val storyIds = stories.map { it.id }
+            val xstories = blogApi.searchStories(
+                request = SearchStoryRequest(
+                    siteId = tenant.id,
+                    sortBy = StorySortStrategy.modified,
+                    status = StoryStatus.published,
+                    dedupUser = true,
+                    context = SearchStoryContext(
+                        deviceId = tracingContext.deviceId()
+                    )
+                )
+            ).stories
+                .filter { !storyIds.contains(it.id) }
+                .take(maxRecommendations - stories.size)
+            stories.addAll(xstories)
+        }
 
         if (stories.isEmpty())
             return null
 
+
         val children = mutableListOf<WidgetAware>()
         children.addAll(
             listOf(
-                Divider(color = Theme.COLOR_DIVIDER, height = 1.0),
                 Container(
                     padding = 10.0,
                     child = Text(
@@ -243,10 +271,69 @@ class ReadScreen(
                 )
             }
         )
-        return Column(
-            mainAxisAlignment = MainAxisAlignment.start,
-            crossAxisAlignment = CrossAxisAlignment.start,
-            children = children
+        return toSectionWidget(
+            Column(
+                mainAxisAlignment = MainAxisAlignment.start,
+                crossAxisAlignment = CrossAxisAlignment.start,
+                children = children
+            )
         )
     }
+
+    private fun toAuthorWidget(author: UserDto): WidgetAware =
+        toSectionWidget(
+            child = Column(
+                mainAxisAlignment = MainAxisAlignment.start,
+                crossAxisAlignment = CrossAxisAlignment.start,
+                children = listOfNotNull(
+                    Container(
+                        padding = 10.0,
+                        child = Row(
+                            children = listOfNotNull(
+                                Avatar(
+                                    model = AccountModel(
+                                        id = author.id,
+                                        displayName = author.fullName,
+                                        pictureUrl = author.pictureUrl
+                                    ),
+                                    radius = 12.0
+                                ),
+                                Container(padding = 5.0),
+                                Text(
+                                    caption = author.fullName.uppercase(),
+                                    size = Theme.TEXT_SIZE_SMALL,
+                                    color = Theme.COLOR_PRIMARY,
+                                    decoration = TextDecoration.Underline
+                                ),
+                            )
+                        )
+                    ),
+                    Column(
+                        mainAxisAlignment = MainAxisAlignment.start,
+                        crossAxisAlignment = CrossAxisAlignment.start,
+                        children = listOfNotNull(
+                            if (author.biography.isNullOrEmpty())
+                                null
+                            else
+                                Container(
+                                    padding = 5.0,
+                                    child = Text(author.biography)
+                                ),
+
+                            Center(
+                                child = Button(
+                                    stretched = false,
+                                    padding = 5.0,
+                                    caption = getText("page.read.button.author"),
+                                    action = gotoUrl(
+                                        urlBuilder.build("?user-id=${author.id}")
+                                    ),
+                                )
+                            )
+
+                        )
+                    )
+                )
+            )
+        )
 }

@@ -83,13 +83,19 @@
                               "type": "Text",
                               "attributes": {
                                 "caption": "USER 11",
-                                "size": 10.0
+                                "color": "#1D7EDF",
+                                "size": 10.0,
+                                "decoration": "Underline"
                               },
                               "children": []
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "action": {
+                        "type": "Route",
+                        "url": "http://localhost:0/?user-id=11"
+                      }
                     },
                     {
                       "type": "Container",
@@ -212,13 +218,19 @@
                               "type": "Text",
                               "attributes": {
                                 "caption": "USER 11",
-                                "size": 10.0
+                                "color": "#1D7EDF",
+                                "size": 10.0,
+                                "decoration": "Underline"
                               },
                               "children": []
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "action": {
+                        "type": "Route",
+                        "url": "http://localhost:0/?user-id=11"
+                      }
                     },
                     {
                       "type": "Container",
@@ -341,13 +353,19 @@
                               "type": "Text",
                               "attributes": {
                                 "caption": "USER 13",
-                                "size": 10.0
+                                "color": "#1D7EDF",
+                                "size": 10.0,
+                                "decoration": "Underline"
                               },
                               "children": []
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "action": {
+                        "type": "Route",
+                        "url": "http://localhost:0/?user-id=13"
+                      }
                     },
                     {
                       "type": "Container",
