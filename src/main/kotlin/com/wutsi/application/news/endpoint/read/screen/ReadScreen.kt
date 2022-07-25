@@ -205,7 +205,6 @@ class ReadScreen(
         if (stories.isEmpty())
             return null
 
-
         val children = mutableListOf<WidgetAware>()
         children.addAll(
             listOf(
